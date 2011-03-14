@@ -1,0 +1,8 @@
+web/bundles/
+app/bootstrap*
+app/config/parameters.ini
+app/cache/*
+app/logs/*
+build/
+/bin/
+/web/images/*

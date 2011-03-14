@@ -1,0 +1,75 @@
+{% extends 'WebProfilerBundle:Profiler:base.html.twig' %}
+
+{% block body %}
+
+    {% render 'WebProfilerBundle:Profiler:toolbar' with { 'token': token, 'position': 'normal' } %}
+
+    <div id="content">
+
+        <div class="header clear_fix">
+            <h1>
+                <img src="{{ asset('bundles/webprofiler/images/profiler/logo_symfony_profiler.gif') }}" alt="Symfony profiler"/>
+            </h1>
+
+            <div class="search">
+                <form method="get" action="http://symfony.com/search">
+                    <div class="form_row">
+                        <label for="search_id">
+                            <img src="{{ asset('bundles/webprofiler/images/profiler/grey_magnifier.png') }}" alt="Search on Symfony website"/>
+                        </label>
+
+                        <input name="q" id="search_id" type="text" placeholder="Search on Symfony website"/>
+
+                        <button type="submit">
+                            <span class="border_l">
+                                <span class="border_r">
+                                    <span class="btn_bg">OK</span>
+                                </span>
+                            </span>
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <div class="resume">
+            <p>
+                <strong><a href="{{ profiler.url }}">{{ profiler.url }}</a></strong>
+                <span class="date">
+                    <strong>by {{ profiler.ip }}</strong> at <strong>{{ profiler.time|date('r') }}</strong>
+                </span>
+            </p>
+        </div>
+
+        <div class="main">
+    
+            <div class="clear_fix">
+
+                <div class="navigation">
+            
+                    {% if templates is defined %}
+                        <ul class="menu_profiler">
+                            {% for name, template in templates %}
+                                {% set menu %}{{ template.renderBlock('menu', { 'collector': profiler.get(name)}) }}{% endset %}
+                                {% if menu != '' %}
+                                    <li class="{{ name }}{% if name == panel %} selected{% endif %}">
+                                        <a href="{{ path('_profiler_panel', { 'token': token, 'panel': name }) }}">{{ menu|raw }}</a>
+                                    </li>
+                                {% endif %}
+                            {% endfor %}
+                        </ul>
+                    {% endif %}
+
+                    {% render 'WebProfilerBundle:Profiler:searchBar' with { 'token': token } %}
+                    
+                    {% include 'WebProfilerBundle:Profiler:admin.html.twig' with { 'token': token } only %}
+
+                </div>
+
+                <div class="collector_content">
+                    {% block panel '' %}
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
