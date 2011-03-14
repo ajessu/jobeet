@@ -1,8 +1,9 @@
 Jobeet with Symfony2
 ====================
 
-This is the source of a project to follow the Jobeet Tutorial on Symfony2
-created by SymfonyTuts.
+This is a derivative work of the original <a href="http://http://www.symfony-project.org/jobeet/1_4/Doctrine/en/">Jobeet tutorial</a> by Fabien Potencier and Jonathan Wage for the Symfony2 framework.
+
+This is a project to follow along the Jobeet Tutorial on Symfony2.
 
 It's an attempt to port the Jobeet Tutorial to Symfony2, and it's not considered
 official in any way.
