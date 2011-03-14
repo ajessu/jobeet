@@ -38,7 +38,8 @@ doctrine:
     orm:
         auto_generate_proxy_classes: %kernel.debug%
         mappings:
-            AcmeDemoBundle: ~
+            AcmeDemoBundle:    ~
+            AcmeJobeetBundle:  ~
 
 # Swiftmailer Configuration
 swiftmailer:

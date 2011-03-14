@@ -15,6 +15,9 @@ class AppKernel extends Kernel
             new Symfony\Bundle\DoctrineBundle\DoctrineBundle(),
             new Symfony\Bundle\AsseticBundle\AsseticBundle(),
             new Sensio\Bundle\FrameworkExtraBundle\SensioFrameworkExtraBundle(),
+
+            #My Bundles
+            new Acme\JobeetBundle\AcmeJobeetBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {
@@ -23,9 +26,6 @@ class AppKernel extends Kernel
             $bundles[] = new Acme\DemoBundle\AcmeDemoBundle();
             
         }
-
-        #My Bundles
-        $bundles[] = new Acme\JobeetBundle\AcmeJobeetBundle();
 
         return $bundles;
     }
