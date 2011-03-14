@@ -21,7 +21,11 @@ class AppKernel extends Kernel
             $bundles[] = new Symfony\Bundle\WebProfilerBundle\WebProfilerBundle();
             $bundles[] = new Symfony\Bundle\WebConfiguratorBundle\SymfonyWebConfiguratorBundle();
             $bundles[] = new Acme\DemoBundle\AcmeDemoBundle();
+            
         }
+
+        #My Bundles
+        $bundles[] = new Acme\JobeetBundle\AcmeJobeetBundle();
 
         return $bundles;
     }
