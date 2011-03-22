@@ -66,9 +66,9 @@ class Job
     protected $token;
 
     /**
-     * @orm:Column(type="boolean")
+     * @orm:Column(type="boolean", , name="is_public")
      */
-    protected $is_public;
+    protected $isPublic;
 
     /**
      * @orm:Column(type="boolean", name="is_activated")

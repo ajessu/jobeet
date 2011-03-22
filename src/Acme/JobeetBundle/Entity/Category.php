@@ -18,20 +18,4 @@ class Category
      * @orm:Column(type="string", length="255", unique=true)
      */
     protected $name;
-
-    /**
-     * @orm:Column(type="datetime", name="created_at")
-     */
-    protected $createdAt;
-
-    /**
-     * @orm:Column(type="datetime", name="expires_at")
-     */
-    protected $expiresAt;
-
-    public function __construct()
-    {
-        $this->createdAt = new \DateTime();
-        $this->updatedAt = new \DateTime();
-    }
 }
