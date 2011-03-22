@@ -1,9 +1,9 @@
 <?php
 
 /*
- * This file is part of the Assetic package.
+ * This file is part of the Assetic package, an OpenSky project.
  *
- * (c) Kris Wallsmith <kris.wallsmith@gmail.com>
+ * (c) 2010-2011 OpenSky Project Inc
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -34,9 +34,9 @@ class AsseticNode extends \Twig_Node
         $compiler
             ->addDebugInfo($this)
             ->write("\$context['asset_url'] = ")
-            ->subcompile($this->getAssetUrlNode($this->getNode('body')))
+            ->subcompile($this->getAssetUrlNode($body))
             ->raw(";\n")
-            ->subcompile($this->getNode('body'))
+            ->subcompile($body)
             ->write("unset(\$context['asset_url']);\n")
         ;
     }

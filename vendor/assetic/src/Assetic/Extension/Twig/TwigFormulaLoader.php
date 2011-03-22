@@ -1,9 +1,9 @@
 <?php
 
 /*
- * This file is part of the Assetic package.
+ * This file is part of the Assetic package, an OpenSky project.
  *
- * (c) Kris Wallsmith <kris.wallsmith@gmail.com>
+ * (c) 2010-2011 OpenSky Project Inc
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -30,8 +30,12 @@ class TwigFormulaLoader implements FormulaLoaderInterface
 
     public function load(ResourceInterface $resource)
     {
-        $tokens = $this->twig->tokenize($resource->getContent());
-        $nodes  = $this->twig->parse($tokens);
+        try {
+            $tokens = $this->twig->tokenize($resource->getContent());
+            $nodes  = $this->twig->parse($tokens);
+        } catch (\Exception $e) {
+            return array();
+        }
 
         return $this->loadNode($nodes);
     }

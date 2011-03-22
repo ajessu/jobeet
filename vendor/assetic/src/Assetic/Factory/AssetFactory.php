@@ -1,9 +1,9 @@
 <?php
 
 /*
- * This file is part of the Assetic package.
+ * This file is part of the Assetic package, an OpenSky project.
  *
- * (c) Kris Wallsmith <kris.wallsmith@gmail.com>
+ * (c) 2010-2011 OpenSky Project Inc
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -174,7 +174,7 @@ class AssetFactory
      *
      * The input string can be one of the following:
      *
-     *  * A reference:     If the string starts with a "@" it will be interpreted as a reference to an asset in the asset manager
+     *  * A reference:     If the string starts with an "at" sign it will be interpreted as a reference to an asset in the asset manager
      *  * An absolute URL: If the string contains "://" it will be interpreted as a remote asset
      *  * A glob:          If the string contains a "*" it will be interpreted as a glob
      *  * A path:          Otherwise the string is interpreted as a path

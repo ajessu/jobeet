@@ -1,9 +1,9 @@
 <?php
 
 /*
- * This file is part of the Assetic package.
+ * This file is part of the Assetic package, an OpenSky project.
  *
- * (c) Kris Wallsmith <kris.wallsmith@gmail.com>
+ * (c) 2010-2011 OpenSky Project Inc
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -46,7 +46,7 @@ class LessFilter implements FilterInterface
 
     public function filterLoad(AssetInterface $asset)
     {
-        static $format = <<<JAVASCRIPT
+        static $format = <<<'EOF'
 var less = require('less');
 var sys  = require('sys');
 
@@ -65,16 +65,16 @@ new(less.Parser)(%s).parse(%s, function(e, tree) {
     }
 });
 
-JAVASCRIPT;
+EOF;
 
         $sourceUrl = $asset->getSourceUrl();
 
         // parser options
         $parserOptions = array();
         if ($sourceUrl && false === strpos($sourceUrl, '://')) {
-            $baseDir = self::isAbsolutePath($sourceUrl) ? '' : $this->baseDir;
+            $baseDir = self::isAbsolutePath($sourceUrl) ? '' : $this->baseDir.'/';
 
-            $parserOptions['paths'] = array($baseDir.'/'.dirname($sourceUrl));
+            $parserOptions['paths'] = array($baseDir.dirname($sourceUrl));
             $parserOptions['filename'] = basename($sourceUrl);
         }
 

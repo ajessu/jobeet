@@ -27,8 +27,17 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
  */
 class AnnotatedRouteControllerLoader extends AnnotationClassLoader
 {
+    /**
+     * @var Sensio\Bundle\FrameworkExtraBundle\Configuration\AnnotationReader
+     */
     protected $configReader;
 
+    /**
+     * Constructor.
+     *
+     * @param AnnotationReader $reader An AnnotationReader instance
+     * @param ConfigurationAnnotationReader $configReader A ConfigurationAnnotationReader instance
+     */
     public function __construct(AnnotationReader $reader, ConfigurationAnnotationReader $configReader)
     {
         $this->configReader = $configReader;
@@ -36,11 +45,18 @@ class AnnotatedRouteControllerLoader extends AnnotationClassLoader
         parent::__construct($reader);
     }
 
-    protected function configureRoute(Route $route, \ReflectionClass $class, \ReflectionMethod $method)
+    /**
+     * Configures the _controller default parameter and eventually the _method 
+     * requirement of a given Route instance.
+     *
+     * @param Route $route A Route instance
+     * @param ReflectionClass $class A ReflectionClass instance
+     * @param ReflectionMethod $method A ReflectionClass method
+     */
+    protected function configureRoute(Route $route, \ReflectionClass $class, \ReflectionMethod $method, $annot)
     {
         // controller
-        $classAnnot = $this->reader->getClassAnnotation($class, $this->annotationClass);
-        if ($classAnnot && $service = $classAnnot->getService()) {
+        if ($service = $annot->getService()) {
             $route->setDefault('_controller', $service.':'.$method->getName());
         } else {
             $route->setDefault('_controller', $class->getName().'::'.$method->getName());
@@ -52,5 +68,29 @@ class AnnotatedRouteControllerLoader extends AnnotationClassLoader
                 $route->setRequirement('_method', implode('|', $configuration->getMethods()));
             }
         }
+    }
+
+    /**
+     * Makes the default route name more sane by removing common keywords.
+     *
+     * @param  ReflectionClass $class A ReflectionClass instance
+     * @param  ReflectionMethod $method A ReflectionMethod instance
+     * @return string
+     */
+    public function getDefaultRouteName(\ReflectionClass $class, \ReflectionMethod $method)
+    {
+        $routeName = parent::getDefaultRouteName($class, $method);
+
+        return str_replace(array(
+            'bundle',
+            'controller',
+            'action',
+            '__',
+        ), array(
+            null,
+            null,
+            null,
+            '_',
+        ), $routeName);
     }
 }

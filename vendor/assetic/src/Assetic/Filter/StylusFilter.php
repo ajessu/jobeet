@@ -1,9 +1,9 @@
 <?php
 
 /*
- * This file is part of the Assetic package.
+ * This file is part of the Assetic package, an OpenSky project.
  *
- * (c) Kris Wallsmith <kris.wallsmith@gmail.com>
+ * (c) 2010-2011 OpenSky Project Inc
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -54,9 +54,9 @@ class StylusFilter implements FilterInterface
      */
     public function filterLoad(AssetInterface $asset)
     {
-        static $format = <<<JAVASCRIPT
-var stylus = require('stylus'),
-       sys = require('sys');
+        static $format = <<<'EOF'
+var stylus = require('stylus');
+var sys    = require('sys');
 
 stylus(%s, %s).render(function(e, css){
     if (e) {
@@ -67,7 +67,7 @@ stylus(%s, %s).render(function(e, css){
     process.exit(0);
 });
 
-JAVASCRIPT;
+EOF;
 
         // parser options
         $parserOptions = array();
