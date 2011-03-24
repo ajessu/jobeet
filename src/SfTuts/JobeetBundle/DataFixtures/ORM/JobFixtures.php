@@ -1,8 +1,8 @@
-      namespace Acme\JobeetBundle\DataFixtures\ORM;
+      namespace SfTuts\JobeetBundle\DataFixtures\ORM;
 
       use Doctrine\Common\DataFixtures\FixtureInterface,
-        Acme\JobeetBundleJobeetBundle\Entity\Job,
-        Acme\JobeetBundleJobeetBundle\Entity\Category; 
+        SfTuts\JobeetBundle\Entity\Job,
+        SfTuts\JobeetBundle\Entity\Category; 
 
       class JobFixtures implements FixtureInterface
       {

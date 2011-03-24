@@ -1,9 +1,9 @@
 <?php
 
-namespace Acme\JobeetBundle;
+namespace SfTuts\JobeetBundle;
 
 use Symfony\Component\HttpKernel\Bundle\Bundle;
 
-class AcmeJobeetBundle extends Bundle
+class SfTutsJobeetBundle extends Bundle
 {
 }

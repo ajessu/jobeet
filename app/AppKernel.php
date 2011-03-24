@@ -20,7 +20,7 @@ class AppKernel extends Kernel
             new Acme\DemoBundle\AcmeDemoBundle(),
 
             #My Bundles
-            new Acme\JobeetBundle\AcmeJobeetBundle(),
+            new SfTuts\JobeetBundle\SfTutsJobeetBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {

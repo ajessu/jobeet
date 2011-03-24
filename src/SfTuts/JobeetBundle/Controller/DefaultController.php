@@ -1,6 +1,6 @@
 <?php
 
-namespace Acme\JobeetBundle\Controller;
+namespace SfTuts\JobeetBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
@@ -8,6 +8,6 @@ class DefaultController extends Controller
 {
     public function indexAction()
     {
-        return $this->render('AcmeJobeetBundle:Default:index.html.twig');
+        return $this->render('SfTutsJobeetBundle:Default:index.html.twig');
     }
 }

@@ -44,8 +44,8 @@ doctrine:
         entity_managers:
             default:
                 mappings:
-                    AcmeDemoBundle: ~
-                    AcmeJobeetBundle: ~
+                    AcmeDemoBundle:     ~
+                    SfTutsJobeetBundle: ~
 
 # Swiftmailer Configuration
 swiftmailer:

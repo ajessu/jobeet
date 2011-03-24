@@ -1,6 +1,6 @@
 <?php
 
-namespace Acme\JobeetBundle\Entity;
+namespace SfTuts\JobeetBundle\Entity;
 
 /**
  * @orm:Entity
