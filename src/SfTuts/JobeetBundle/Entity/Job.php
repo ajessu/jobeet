@@ -86,6 +86,11 @@ class Job
     protected $createdAt;
 
     /**
+     * @orm:Column(type="datetime", name="updated_at")
+     */
+    protected $updatedAt;
+
+    /**
      * @orm:Column(type="datetime", name="expires_at")
      */
     protected $expiresAt;
@@ -367,6 +372,26 @@ class Job
     }
 
     /**
+     * Set updatedAt
+     *
+     * @param datetime $updatedAt
+     */
+    public function setUpdatedAt($updatedAt)
+    {
+        $this->updatedAt = $updatedAt;
+    }
+
+    /**
+     * Get updatedAt
+     *
+     * @return datetime $updatedAt
+     */
+    public function getUpdatedAt()
+    {
+        return $this->updatedAt;
+    }
+
+    /**
      * Set expiresAt
      *
      * @param datetime $expiresAt
@@ -389,9 +414,9 @@ class Job
     /**
      * Set category
      *
-     * @param Acme\JobeetBundle\Entity\Category $category
+     * @param SfTuts\JobeetBundle\Entity\Category $category
      */
-    public function setCategory(\Acme\JobeetBundle\Entity\Category $category)
+    public function setCategory(\SfTuts\JobeetBundle\Entity\Category $category)
     {
         $this->category = $category;
     }
@@ -399,7 +424,7 @@ class Job
     /**
      * Get category
      *
-     * @return Acme\JobeetBundle\Entity\Category $category
+     * @return SfTuts\JobeetBundle\Entity\Category $category
      */
     public function getCategory()
     {
